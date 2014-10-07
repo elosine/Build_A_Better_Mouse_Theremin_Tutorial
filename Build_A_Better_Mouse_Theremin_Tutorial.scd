@@ -275,7 +275,7 @@ a.set(\lfofreq, 17);
 
 
 SynthDef(\mouseTheremin, {
-	arg pitchLo = 30, pitchHi = 80, pitchres=1.0, bwfreq=800, filterfreq=1500, lfofreq=3, atk=0.001, rel=0.5, crv=-2;
+	arg pitchLo = 30, pitchHi = 80, pitchres=1.0, bwfreq=800, filterfreq=1500, lfofreq=3, atk=0.001, rel=0.5, crv = -2;
 	var osc, freq, env, envgate, pitch, amp, doppel, octdown;
 	amp = MouseX.kr(-40, 10).dbamp;
 	pitch = MouseY.kr(minval:pitchHi, maxval:pitchLo, lag:0.0001).round(pitchres);
@@ -293,7 +293,15 @@ SynthDef(\mouseTheremin, {
 }).add;
 
 //Then once we create an instance of the synth
-//
+//And we can control the envelope w/arguments
+a = Synth(\mouseTheremin);
+a.set(\atk, 0.2, \rel, 1.0, \crv, -4);
+a.set(\atk, 0.7, \rel, 0.01, \crv, 6);
+//of course you can modify any of the arguments
+a.set(\atk, 0.3, \rel, 0.01, \crv, 2, \filterfreq, 700, \lfofreq, 0.7, \bwfreq, 1500);
+
+//How about the theme from Schubert's 8th
+
 
 
 
